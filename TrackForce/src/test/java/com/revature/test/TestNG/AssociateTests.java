@@ -45,9 +45,8 @@ public class AssociateTests {
 	
   @Test(priority = 0)
   public void LoadWebpage() {
-	  System.out.println(System.getenv("URL") + "#/login");
-	  wd.get(System.getenv("URL") + "#/login");
-	  new WebDriverWait(wd, 15).until(ExpectedConditions.urlContains("#/login"));
+	  wd.get("http://localhost:4200/#/login");
+	  new WebDriverWait(wd, 15).until(ExpectedConditions.urlContains("http://localhost:4200/#/login"));
   }
   
   @Test (priority = 1)
@@ -58,14 +57,14 @@ public class AssociateTests {
 	 LoginPage.password(wd).sendKeys(password);
 	 wait.until(ExpectedConditions.elementToBeClickable(LoginPage.signIn(wd)));
 	 LoginPage.signIn(wd).click();
-	 wait.until(ExpectedConditions.urlContains(System.getenv("URL")+"#/associate-view"));
+	 wait.until(ExpectedConditions.urlContains("http://localhost:4200/#/associate-view"));
   }
   
   @Test (priority = 2)
   public void LogOut() {
 	  wait.until(ExpectedConditions.elementToBeClickable(AssociateHome.logout(wd)));
 	  AssociateHome.logout(wd).click();
-	  wait.until(ExpectedConditions.urlContains(System.getenv("URL")+"#/login"));
+	  wait.until(ExpectedConditions.urlContains("http://localhost:4200/#/login"));
 	  
   }
   @Test (priority = 3)

@@ -83,9 +83,9 @@ public class AdminTests {
 		File chrome = new File("src/main/resources/chromedriver.exe");
 		System.setProperty("webdriver.chrome.driver", chrome.getAbsolutePath());
 		wd = new ChromeDriver();
-		wd.get(System.getenv("URL")+"NGTrackForce/");
+		wd.get("http://localhost:4200/NGTrackForce/");
 		wait = new WebDriverWait(wd,10);
-		wait.until(ExpectedConditions.urlContains(System.getenv("URL")+"#/login"));
+		wait.until(ExpectedConditions.urlContains("http://localhost:4200/#/login"));
 		
 	}
 	
@@ -303,8 +303,8 @@ public class AdminTests {
 		wait.until(ExpectedConditions.elementToBeClickable(AdminCreateUser.usernameInput(wd)));
 		AdminCreateUser.usernameInput(wd).sendKeys(randomStringValid());
 		
-		AdminCreateUser.passwordInput(wd).sendKeys("#Mwm12345@");
-		AdminCreateUser.confirmPasswordInput(wd).sendKeys("#Mwm12345@");
+		AdminCreateUser.passwordInput(wd).sendKeys("123");
+		AdminCreateUser.confirmPasswordInput(wd).sendKeys("123");
 		
 		wait.until(ExpectedConditions.elementToBeClickable(AdminCreateUser.selectAssociate(wd)));
 		Actions action = new Actions(wd);
